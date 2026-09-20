@@ -1,18 +1,22 @@
 {
   "kind": "evm_project",
   "token": {
+    "contract": "Guest",
     "name": "Guest",
     "symbol": "GUEST",
-    "decimals": 18,
-    "totalSupply": "1000000000000000000000000000",
-    "contract": "src/Guest.sol:Guest",
-    "constructorArgs": []
+    "decimals": 18
   },
   "contracts": [
     {
-      "name": "Guestbook",
-      "contract": "src/Guestbook.sol:Guestbook",
+      "contract": "Guestbook",
       "constructorArgs": ["$token"]
     }
-  ]
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Sepolia project launch. Guest has a zero-argument constructor that mints its entire fixed supply to its deployer, with 18 decimals and no mint backdoor. Guestbook takes only the Guest token address via $token. Posting a message of at most 140 bytes transfers exactly one GUEST from the author to 0x000000000000000000000000000000000000dEaD; this does not reduce ERC-20 total supply. Entries store author, timestamp and message, are enumerable by index, and cannot be edited. Neither contract has an owner, admin, upgrade path or additional fee. Posting uses checks-effects-interactions and a reentrancy guard; failed payments revert the entry and event. Durable token changes and successful posts emit events. The pool pairs with native ETH and has no hook; its initialPrice is decimal sqrtPriceX96, not a promised valuation. Final independent review of the accepted source, bytecode and this manifest is required before deployment. Contributors never broadcast; the admitted release goes through the authorized deployer."
 }
