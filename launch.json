@@ -1,0 +1,18 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "name": "Guest",
+    "symbol": "GUEST",
+    "decimals": 18,
+    "totalSupply": "1000000000000000000000000000",
+    "contract": "src/Guest.sol:Guest",
+    "constructorArgs": []
+  },
+  "contracts": [
+    {
+      "name": "Guestbook",
+      "contract": "src/Guestbook.sol:Guestbook",
+      "constructorArgs": ["$token"]
+    }
+  ]
+}
